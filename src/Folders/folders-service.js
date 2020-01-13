@@ -1,37 +1,38 @@
 const FolderService = {
-  //   getAllFolder(knex) {
-  //     return knex.select('*').from('blogful_users');
-  //   },
 
-  //   insertFolder(knex, newUser) {
-  //     return knex
-  //       .insert(newUser)
-  //       .into('blogful_users')
-  //       .returning('*')
-  //       .then(rows => {
-  //         return rows[0];
-  //       });
-  //   },
+  getAllFolders(knex) {
+    return knex.select('*').from('noteful_folders');
+  },
 
-  //   getById(knex, id) {
-  //     return knex
-  //       .from('blogful_users')
-  //       .select('*')
-  //       .where('id', id)
-  //       .first();
-  //   },
+  insertFolder(knex, newFolder) {
+    return knex
+      .insert(newFolder)
+      .into('noteful_folders')
+      .returning('*')
+      .then(rows => {
+        return rows[0];
+      });
+  },
 
-  //   deleteFolder(knex, id) {
-  //     return knex('blogful_users')
-  //       .where({ id })
-  //       .delete();
-  //   },
+  getById(knex, id) {
+    return knex
+      .from('noteful_folders')
+      .select('*')
+      .where('id', id)
+      .first();
+  },
 
-  //   updateFolder(knex, id, newUserFields) {
-  //     return knex('blogful_users')
-  //       .where({ id })
-  //       .update(newUserFields);
-  //   },
+  deleteFolder(knex, id) {
+    return knex('noteful_folders')
+      .where({ id })
+      .delete();
+  },
+
+  updateFolder(knex, id, newFolderFields) {
+    return knex('noteful_folders')
+      .where({ id })
+      .update(newFolderFields);
+  },
 };
 
 module.exports = FolderService;

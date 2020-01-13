@@ -1,37 +1,38 @@
 const NotesService = {
-  //   getAllNotes(knex) {
-  //     return knex.select('*').from('blogful_users');
-  //   },
 
-  //   insertNotes(knex, newUser) {
-  //     return knex
-  //       .insert(newUser)
-  //       .into('blogful_users')
-  //       .returning('*')
-  //       .then(rows => {
-  //         return rows[0];
-  //       });
-  //   },
+  getAllNotes(knex) {
+    return knex.select('*').from('noteful_notes');
+  },
 
-  //   getById(knex, id) {
-  //     return knex
-  //       .from('blogful_users')
-  //       .select('*')
-  //       .where('id', id)
-  //       .first();
-  //   },
+  insertNote(knex, newNote) {
+    return knex
+      .insert(newNote)
+      .into('noteful_notes')
+      .returning('*')
+      .then(rows => {
+        return rows[0];
+      });
+  },
 
-  //   deleteNotes(knex, id) {
-  //     return knex('blogful_users')
-  //       .where({ id })
-  //       .delete();
-  //   },
+  getById(knex, id) {
+    return knex
+      .from('noteful_notes')
+      .select('*')
+      .where('id', id)
+      .first();
+  },
 
-  //   updateNotes(knex, id, newUserFields) {
-  //     return knex('blogful_users')
-  //       .where({ id })
-  //       .update(newUserFields);
-  //   },
+  deleteNote(knex, id) {
+    return knex('noteful_notes')
+      .where({ id })
+      .delete();
+  },
+
+  updateNote(knex, id, newNoteFields) {
+    return knex('noteful_notes')
+      .where({ id })
+      .update(newNoteFields);
+  },
 };
 
 module.exports = NotesService;
